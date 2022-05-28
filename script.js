@@ -65,15 +65,21 @@ btnroll.addEventListener('click', function () {
   }
 });
 btnhold.addEventListener('click', function () {
-  scores[activeplayer] += current;
-  document.getElementById(`score--${activeplayer}`).textContent =
-    scores[activeplayer];
-  if (scores[activeplayer] > 20) {
-    if (activeplayer === 0) {
-      player0el.classList.add('player--winner');
+  if (playing) {
+    scores[activeplayer] += current;
+    document.getElementById(`score--${activeplayer}`).textContent =
+      scores[activeplayer];
+    if (scores[activeplayer] > 100) {
+      document.getElementById(`player--${activeplayer}`).add('player--winner');
+      document
+        .getElementById(`player--${activeplayer}`)
+        .remove('player--active');
+      playing = false;
+      diceel.classList.add('hidden');
+    } else {
+      switchplayer();
     }
   }
-  switchplayer();
 });
 
 btnnew.addEventListener('click', init);
