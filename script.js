@@ -70,10 +70,12 @@ btnhold.addEventListener('click', function () {
     document.getElementById(`score--${activeplayer}`).textContent =
       scores[activeplayer];
     if (scores[activeplayer] > 100) {
-      document.getElementById(`player--${activeplayer}`).add('player--winner');
       document
         .getElementById(`player--${activeplayer}`)
-        .remove('player--active');
+        .classList.add('player--winner');
+      document
+        .getElementById(`player--${activeplayer}`)
+        .classList.remove('player--active');
       playing = false;
       diceel.classList.add('hidden');
     } else {
