@@ -70,14 +70,15 @@ btnhold.addEventListener('click', function () {
     document.getElementById(`score--${activeplayer}`).textContent =
       scores[activeplayer];
     if (scores[activeplayer] > 100) {
-      document
-        .getElementById(`player--${activeplayer}`)
-        .classList.add('player--winner');
-      document
-        .getElementById(`player--${activeplayer}`)
-        .classList.remove('player--active');
       playing = false;
       diceel.classList.add('hidden');
+      if (activeplayer == 0) {
+        player0el.classList.add('player--winner');
+        player0el.classList.remove('player--active');
+      } else {
+        player1el.classList.add('player--winner');
+        player1el.classList.remove('player--active');
+      }
     } else {
       switchplayer();
     }
